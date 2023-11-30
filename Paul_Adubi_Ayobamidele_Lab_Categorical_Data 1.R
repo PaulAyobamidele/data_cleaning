@@ -196,7 +196,7 @@ survivor_family_table
 survivor_family_df <- as.data.frame(survivor_family_table)
 
 # Plot the bar chart
-ggplot(survivor_family_df, aes(x = Var1, y = Freq, fill = Var2)) +
+ggplot(survivor_family_df, aes(x = Var2, y = Freq, fill = Var2)) +
     geom_bar(stat = "identity", position = "dodge") +
     labs(
         title = "Survival Count by Family Member Count",
@@ -287,3 +287,29 @@ range_female_non_survivors
 range_sex_age_vector <- c(range_male_non_survivors, range_female_non_survivors)
 
 barplot(range_sex_age_vector, names.arg = c("Range of Males Age", "Range of Females Age"), col = c("Brown", "Purple"), main = "The Range of Non-Survivors Age", ylab = "Non-survivors range of age", ylim = c(0, 90))
+
+
+# What is the correlation between age and fare
+
+corr_age <- titanic_train$Age
+corr_age
+
+
+corr_fare <- titanic_train$Fare
+corr_fare
+
+
+
+cor(corr_age, corr_fare,
+    use = "everything",
+    method = c("pearson", "kendall", "spearman")
+)
+
+
+
+#  0.09606669
+
+cov(corr_age, corr_fare)
+
+
+# 73.84903
