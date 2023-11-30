@@ -231,8 +231,7 @@ ggplot(titanic_train, aes(x = Age_Category, fill = factor(Survived))) +
         x = "Age Category",
         y = "Count",
         fill = "Survived"
-    ) +
-    theme_minimal()
+    )
 
 # CONCLUSION
 # 5. You can run any other analyses. According to you, what were the characteristics of survivors?
@@ -272,3 +271,19 @@ mean_of_females_nonsurvivor
 # 25.04688
 mean_age_data <- c(mean_of_males_nonsurvivor, mean_of_females_nonsurvivor)
 barplot(mean_age_data, names.arg = c("Males", "Females"), col = c("light blue", "orange"), main = "Mean Age of Non-Survivors by Gender", ylab = "Mean Age", ylim = c(0, 40))
+
+
+
+# What is the range of the male non-survivors age
+range_male_non_survivors <- max(titanic_train$Age[titanic_train$Sex == "male" & titanic_train$Survived == 0]) - min(titanic_train$Age[titanic_train$Sex == "male" & titanic_train$Survived == 0])
+range_male_non_survivors
+
+
+# What is the range of the female non-survivors age
+range_female_non_survivors <- max(titanic_train$Age[titanic_train$Sex == "female" & titanic_train$Survived == 0]) - min(titanic_train$Age[titanic_train$Sex == "female" & titanic_train$Survived == 0])
+range_female_non_survivors
+
+
+range_sex_age_vector <- c(range_male_non_survivors, range_female_non_survivors)
+
+barplot(range_sex_age_vector, names.arg = c("Range of Males Age", "Range of Females Age"), col = c("Brown", "Purple"), main = "The Range of Non-Survivors Age", ylab = "Non-survivors range of age", ylim = c(0, 90))
