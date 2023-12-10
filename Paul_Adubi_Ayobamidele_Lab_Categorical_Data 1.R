@@ -309,7 +309,4 @@ cor(corr_age, corr_fare,
 
 #  0.09606669
 
-cov(corr_age, corr_fare)
-
-
-# 73.84903
+# This is a very weak positive correlation indicating that as the fare increase, there is some increase in age even though it is weak relationship.
